@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Karnataka Tourism</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --red: #c60c30;
+            --yellow: #ffcc00;
+            --green: #006a38;
+            --gold: #d4af37;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.4s ease;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1588413822020-1c3c5a02c5f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80') no-repeat center center/cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--red) 33%, var(--yellow) 33% 66%, var(--green) 66%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-text span {
+            color: var(--gold);
+        }
+        
+        .error-code {
+            font-size: 12rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 20px 0;
+            color: var(--gold);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .error-code::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 10px;
+        }
+        
+        .error-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .error-message {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+        
+        .btn-primary:hover {
+            background: #e6c260;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .popular-destinations {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .destination-link {
+            display: block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        
+        .destination-link:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .destination-link i {
+            color: var(--gold);
+            margin-right: 10px;
+        }
+        
+        .copyright {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .developer {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--gold);
+            animation: float 15s infinite linear;
+        }
+        
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+        
+        .floating:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: -5s;
+        }
+        
+        .floating:nth-child(4) {
+            bottom: 25%;
+            right: 20%;
+            animation-delay: -8s;
+        }
+        
+        .floating:nth-child(5) {
+            top: 40%;
+            left: 25%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-40px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .error-code {
+                font-size: 8rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating">ಕ</div>
+        <div class="floating">ನ</div>
+        <div class="floating">ರ್</div>
+        <div class="floating">ನಾ</div>
+        <div class="floating">ಟ</div>
+    </div>
+    
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">ಕ</div>
+            <div class="logo-text">Discover <span>Karnataka</span></div>
+        </div>
+        
+        <div class="error-code">404</div>
+        
+        <h1 class="error-title">Page Not Found</h1>
+        
+        <p class="error-message">
+            The page you are looking for might have been removed, had its name changed, 
+            or is temporarily unavailable. Please try one of the options below.
+        </p>
+        
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-home"></i> Back to Homepage
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <i class="fas fa-search"></i> Search Our Site
+            </a>
+        </div>
+        
+        <div class="popular-destinations">
+            <h2 class="section-title">Explore Popular Destinations</h2>
+            
+            <div class="destinations-grid">
+                <a href="#" class="destination-link">
+                    <i class="fas fa-archway"></i> Hampi
+                </a>
+                <a href="#" class="destination-link">
+                    <i class="fas fa-mountain"></i> Coorg
+                </a>
+                <a href="#" class="destination-link">
+                    <i class="fas fa-palace"></i> Mysuru
+                </a>
+                <a href="#" class="destination-link">
+                    <i class="fas fa-coffee"></i> Chikmagalur
+                </a>
+                <a href="#" class="destination-link">
+                    <i class="fas fa-umbrella-beach"></i> Gokarna
+                </a>
+                <a href="#" class="destination-link">
+                    <i class="fas fa-tree"></i> Bandipur
+                </a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Karnataka Tourism. All rights reserved.</p>
+            <p>Designed and developed by <span class="developer">Tourism Development Team</span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Floating animation enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingElements = document.querySelectorAll('.floating');
+            
+            floatingElements.forEach(el => {
+                // Randomize initial position and animation
+                const randomX = Math.random() * 90;
+                const randomY = Math.random() * 90;
+                const randomDuration = 10 + Math.random() * 20;
+                const randomDelay = -1 * Math.random() * 15;
+                
+                el.style.left = `${randomX}%`;
+                el.style.top = `${randomY}%`;
+                el.style.animationDuration = `${randomDuration}s`;
+                el.style.animationDelay = `${randomDelay}s`;
+            });
+            
+            // Add a subtle background animation
+            let hue = 200;
+            setInterval(() => {
+                hue = (hue + 0.1) % 360;
+                document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 70%, 30%), hsl(${hue + 60}, 70%, 30%), hsl(${hue + 120}, 70%, 30%)`;
+            }, 50);
+        });
+    </script>
+</body>
+</html>
