@@ -1,5 +1,5 @@
 # Discover-Karnataka
-# Discover Karnataka
+
 
 ## Overview
 
